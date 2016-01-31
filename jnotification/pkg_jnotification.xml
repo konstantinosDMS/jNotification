@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <extension type="package" version="3.4.8" method="upgrade">
+ <name>JNotification Package</name>
+ <author>Konstantinos Dimos</author>
+ <creationDate>January 2016</creationDate>
+ <packagename>jnotification</packagename>
+ <version>1.0.0</version>
+ <url></url>
+ <packager>JNotification Team</packager>
+ <packagerurl></packagerurl>
+ <description>JNotification package</description>
+ <update>http://www.crimeanalysis.gr/update</update>
+ <files folder="packages">
+   <file type="plugin" id="plg_content_update_jNotification" group="content">plg_content_update_jNotification.zip</file>
+   <file type="component" id="com_jnotification" >com_jNotification_v1.0.zip</file>
+ </files>
+ </extension>

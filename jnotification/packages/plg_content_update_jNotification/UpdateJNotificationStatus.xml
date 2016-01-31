@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4.8" type="plugin" group="content" method="upgrade" >
+	<name>PLG_CONTENT_UPDATE_JNOTIFICATION_STATUS</name>
+	<author>Konstantinos Dimos</author>
+	<creationDate>January 2016</creationDate>
+	<copyright>(C) 2016 Konstantinos Dimos. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later;</license>
+	<authorEmail>dms.kon@gmail.com</authorEmail>
+	<authorUrl>www.crimeAnalysis.gr</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_CONTENT_UPDATE_JNOTIFICATION_STATUS_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="UpdateJNotificationStatus">UpdateJNotificationStatus.php</filename>
+		<filename>index.html</filename>
+<folder>language</folder>
+	</files>
+	<config>
+        </config>
+</extension>

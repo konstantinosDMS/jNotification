@@ -1,0 +1,10 @@
+AuthName "javascriptInbox user"
+AuthType Basic
+AuthUserFile "C:\xampp\security\htpass.htpass"
+require valid-user
+
+#ErrorDocument 401 "http://test.crimeanalysis.gr/joomla/administrator/components/com_jnotification/views/javascriptInbox/tmpl/reject.php"
+#AuthName "restricted area"
+#AuthType Basic
+#AuthUserFile "/var/www/vhosts/s243978.vps.name-servers.gr/security/password.file"
+#require valid-user
