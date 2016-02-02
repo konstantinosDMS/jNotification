@@ -39,11 +39,7 @@ if (!@$mySwitch){
             $domains[] = 'https://'.$row['domains']; 
     }
 
-    $domains[]='http://localhost';
-    $domains[]='https://localhost';
-    $domains[]='http://127.0.0.1';
-    $domains[]='https://127.0.0.1';
-  
+    
     for ($i=0;$i<count($domains);$i++){
 
         switch ($_SERVER['HTTP_ORIGIN']) {
