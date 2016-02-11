@@ -8,7 +8,7 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-include_once '../../../../../../configuration.php';
+include_once  '../../../../../../configuration.php';
 
 @$mySwitch = $_POST['switch'];
 $mySwitch = @ereg_replace("[[:punct:][:space:][:alpha:]]+", ' ',@$mySwitch);
