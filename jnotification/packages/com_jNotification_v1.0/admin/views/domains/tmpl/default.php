@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 $doc = JFactory::getDocument();
 $doc->addstylesheet(JURI::root().'/media/com_jnotification/css/jnotification.css');
 
+
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');

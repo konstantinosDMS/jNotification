@@ -15,7 +15,7 @@ class JNotificationViewInbox extends JViewLegacy
 	protected $items;
 	protected $pagination;
 	protected $state;
-         
+        protected $domains;
 
 	/**
 	 * Display the view
@@ -25,7 +25,9 @@ class JNotificationViewInbox extends JViewLegacy
 		$this->state		= $this->get('State');                
 		$this->items		=  $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
-            
+                $model = JModelList::getInstance('Domains','JNotificationModel');
+                $this->domains          = $model->getItems();
+                
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -54,7 +56,7 @@ class JNotificationViewInbox extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_JNOTIFICATION_MANAGER_INBOX_NOTIFICATIONS'), 'jnotification');
                 
 		if ($canDo->get('core.edit')) {
-                        JToolBarHelper::addNew('notification.add');
+                        if (count($this->domains)>0) JToolBarHelper::addNew('notification.add');
 			JToolBarHelper::editList('notification.edit');
                         JToolBarHelper::custom('inbox.display','inbox','inbox','Inbox',false);                       
                         JToolBarHelper::custom('outbox.display','outbox','','Outbox',false);    

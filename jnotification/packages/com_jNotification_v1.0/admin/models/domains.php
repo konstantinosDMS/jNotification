@@ -163,7 +163,7 @@ class JNotificationModelDomains extends JModelList
         public function insertMoreRecords($array=array()){
             $app = JFactory::getApplication('administration');
             $id = (int)$app->getUserState('message.id');
-       
+     
             if (empty($id)) $id = (int)$this->getId();
              
             for ($i=0;$i<count($array);$i++){

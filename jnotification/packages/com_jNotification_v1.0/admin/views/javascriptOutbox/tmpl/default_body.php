@@ -32,7 +32,7 @@ echo '<tbody>';
     }
     
     echo 'Wait while senting the message(s)...';
-    echo '<img src=/test/media/com_jnotification/images/wait30.gif />';
+    echo "<img src=".JURI::root()."/media/com_jnotification/images/wait30.gif />";
 ?>
 
 <script type="text/javascript">
@@ -72,8 +72,7 @@ function sentMessage(array,siteName) {
                alert("Problem while saving the message");
                exit;
             }
-           
-            
+                  
             myRequest1 = new Request({
                         url: 'http://'+responseXML.getElementsByTagName("domainSender")[0].firstChild.nodeValue+'/administrator/components/com_jnotification/views/updateRecords/tmpl/default_body.php',
                         method: 'post', 
@@ -111,6 +110,7 @@ function sentMessage(array,siteName) {
                             //alert('Exception...');
                             if ( domainArray.length == 0 ) window.location = 'index.php?option=com_jnotification&view=outbox';
                         }
+                       
             });  
             
            myRequest1.send();

@@ -29,7 +29,7 @@ JHtml::_('behavior.multiselect');
 
 	<div class="clr"> </div>
 
-	<table class="adminlist">
+	<table class="table table-striped" id="userList">
 		<?php echo $this->loadTemplate('head');?>
 		<?php echo $this->loadTemplate('foot');?>
 		<?php echo $this->loadTemplate('body');?>

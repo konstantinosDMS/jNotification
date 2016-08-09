@@ -12,22 +12,22 @@ defined('_JEXEC') or die('Restricted Access');
 
 <thead>
 			<tr>
-				<th width="3%">
+				<th width="3%" class="nowrap center">
 					<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
 				</th>
-				<th width="5%">
+				<th width="5%" class="nowrap center">
 					<?php echo JText::_('Id:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Title:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Sender:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center"> 
 					<?php echo JText::_('Status:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Created At:'); ?>
 				</th>                      
 			</tr>

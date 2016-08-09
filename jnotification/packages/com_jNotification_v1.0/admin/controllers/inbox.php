@@ -10,6 +10,7 @@
  class JNotificationControllerInbox extends  JControllerLegacy{ 
       public function display($cachable = false, $urlparams = false)
     {
+        $this->getModel('Domains','JNotificationModel')->deleteOrphans();
         $this->setRedirect(JRoute::_('index.php?option=com_jnotification&view=inbox', false));
     }
  }

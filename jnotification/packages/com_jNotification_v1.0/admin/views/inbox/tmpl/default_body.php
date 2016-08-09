@@ -17,7 +17,6 @@ foreach ($this->items as $i => $item) :
 $app->setUserState('message_id_'.$item->id, $item->id);
 
 ?>
-
     <tr class="row<?php echo $i % 2; ?>">
     <td class="center">
     <?php echo JHtml::_('grid.id', $i, $item->id); ?>

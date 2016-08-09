@@ -26,9 +26,9 @@ $app->setUserState('message_id_'.$item->id, $item->id);
 <td class="center"><?php echo $this->escape(strip_tags($item->title)); ?></td>
 <td class="center"><?php echo $this->escape(strip_tags($item->message)); ?></td>
 <td class="center"> <?php echo $this->escape(strip_tags($item->domain)); ?></td>
-<td class="center"><?php if ($item->status==0) echo 'Receiver have not Read this message yet'; else echo 'Receiver have Read this message'; ?></td>
+<td class="center"><?php if ((int)$item->status==0) echo 'Receiver have not Read this message yet'; else echo 'Receiver have Read this message'; ?></td>
 <td class="center"><?php echo $this->escape($item->created); ?></td>
-<td class="center"><?php if ($item->success==0) echo 'The message has not been sent to the receiver'; else echo 'The message has been sent to the receiver';  ?></td>
+<td class="center"><?php if ((int)$item->success==0) echo 'The message has not been sent to the receiver'; else echo 'The message has been sent to the receiver';  ?></td>
 </tr>
 
 <?php 

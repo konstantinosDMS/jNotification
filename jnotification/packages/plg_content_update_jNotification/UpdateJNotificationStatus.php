@@ -1,18 +1,20 @@
 <script type="text/javascript">
 
-function sentMessage(domain,url) {
+function sentMessage(domain,url,title) {
     var myRequest;    
     var t= url.indexOf('/');
     var size = url.length-1;
     var domainName = url.slice(0,t);  
     var siteName = url.slice(t+1,size);
-       
+    var title = title;
+
     myRequest = new Request({
         url: 'http://'+domain+'/administrator/components/com_jnotification/views/javascriptInbox/tmpl/default_body.php',
         method: 'post',
         data: {
                 domainName: domainName,
                 siteName : siteName,
+                title : title,
                 switch: 1
         }, 
         onRequest: function(){
@@ -110,20 +112,22 @@ class plgContentUpdateJNotificationStatus extends JPlugin
                         
                         $query->clear(); 
 
-                        $query->select('domain as domain');
-                        $query->from('#__notification_user');
-                        $query->where('message_id='.(int)$id);
-                        $query->where('inbox=1');
+                        $query->select('a.domain as domain,b.title as title');
+                        $query->from('#__notification_user as a');
+                        
+                        $query->join('INNER','#__notification_header'.' AS b on a.message_id=b.id');
+                        $query->where('a.message_id='.(int)$id);
+                        $query->where('a.inbox=1');
 
                         //var_dump($query);                       
                         $db->setQuery($query);
-                        $domain = $db->loadResult();
-            
+                        $domain = $db->loadAssocList();
+           
                         $query->clear();
                         $url =  preg_replace('~^https?://~i', NULL,  JURI::root());
                         
                         echo '<script type="text/javascript">';
-                        echo 'sentMessage('. json_encode($domain) . ',' . json_encode($url). ')';            
+                        echo 'sentMessage('. json_encode($domain[0]['domain']) . ',' . json_encode($url) . ',' . json_encode($domain[0]['title']) .')';            
                         echo '</script>';
                 }             
 		return true;

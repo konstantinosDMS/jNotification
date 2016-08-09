@@ -8,7 +8,7 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-include_once  '../../../../../../configuration.php';
+include_once '../../../../../../configuration.php';
 
 @$mySwitch = $_POST['switch'];
 $mySwitch = @ereg_replace("[[:punct:][:space:][:alpha:]]+", ' ',@$mySwitch);
@@ -28,7 +28,6 @@ $flag=false;
 $db = new mysqli($host,$user,$password,$database);
 
 if (!@$mySwitch){
-    
     $query = "SELECT * FROM ".$prefix."notification_domains";
 
     $result = $db->query($query);   
@@ -39,7 +38,11 @@ if (!@$mySwitch){
             $domains[] = 'https://'.$row['domains']; 
     }
 
-    
+    $domains[]='http://localhost';
+    $domains[]='https://localhost';
+    $domains[]='http://127.0.0.1';
+    $domains[]='https://127.0.0.1';
+  
     for ($i=0;$i<count($domains);$i++){
 
         switch ($_SERVER['HTTP_ORIGIN']) {
@@ -127,28 +130,27 @@ if (!@$mySwitch){
         if ($flag) break;
     }
 } else {
-    
-    $domainName = strip_tags($_POST['domainName']);
-    $domainName = mysql_escape_string($domainName);
-    $domainName =  preg_replace('~^https?://~i', NULL,  $domainName);
-    $domainName = preg_replace('/([\x00-\x20\xff])/se', '', $domainName);
-    
-    $siteName = strip_tags($_POST['siteName']);    
-    $siteName = mysql_escape_string($siteName);
-    $siteName =  preg_replace('~^https?://~i', NULL,  $siteName);
-    $siteName = preg_replace('/([\x00-\x20\xff])/se', '', $siteName);
-    
-    $query = "UPDATE ".$prefix."notification_user"." SET status=1 WHERE domain like '%".$domainName.'%'.$siteName."%' AND outbox=1";
 
-    $db->query($query);  
+    $title  = strip_tags($_POST['title']);  
+    $title =  mysql_escape_string($title);
+    $title =  preg_replace('~^https?://~i', NULL,  $title);
+    $title =  preg_replace('/([\x00-\x20\xff])/se', '', $title);
     
-    if ($db->affected_rows==1){
-        header('Content-Type: application/json');
-        echo json_encode(true);
-    }
-    else {
-        header('Content-Type: application/json');
-        echo json_encode(false);
+    $query = "SELECT id FROM ".$prefix."notification_header WHERE TITLE LIKE '%".$title."%'";
+    $result = $db->query($query);
+ 
+    if ($result->num_rows==1){
+        $query = "UPDATE ".$prefix."notification_user"." SET status=1 WHERE message_id =".(int)$result->fetch_object()->id. " AND outbox=1";
+        $db->query($query);  
+    
+        if ($db->affected_rows==1){
+            header('Content-Type: application/json');
+            echo json_encode(true);
+        }
+        else {
+            header('Content-Type: application/json');
+            echo json_encode(false);
+        }
     }
 }
 

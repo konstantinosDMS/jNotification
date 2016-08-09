@@ -15,25 +15,25 @@ defined('_JEXEC') or die('Restricted Access');
 				<th width="3%">
 					<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
 				</th>
-				<th width="5%">
+				<th width="5%" class="nowrap center">
 					<?php echo JText::_('Id:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Title:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Message:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Send To:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="15%" class="nowrap center">
 					<?php echo JText::_('Status:'); ?>
 				</th>
-                                <th width="5%">
+                                <th width="5%" class="nowrap center">
 					<?php echo JText::_('Created At:'); ?>
 				</th>   
-                                <th width="5%">
+                                <th width="15%" class="nowrap center">
 					<?php echo JText::_('Succeed:'); ?>
 				</th>   
 			</tr>
